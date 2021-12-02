@@ -7,7 +7,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Custom
-instructions.md*
+*instructions.md*
 psuedo.md*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
