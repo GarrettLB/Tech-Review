@@ -2,19 +2,16 @@
     {
       "title": "MacBook Air",
       "content": "Super fast, super light, ... super expensive. ",
-      "time": "12/3",
       "user_id": 1
     },
     {
       "title": "iPhone 13",
       "content": "Best iPhone yet!",
-      "time": "12/3",
       "user_id": 1
     },
     {
       "title": "Apple Watch SE",
       "content": "Great for the gym",
-      "time": "12/3",
       "user_id": 1
     }
 ]
