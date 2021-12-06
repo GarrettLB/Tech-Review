@@ -3,16 +3,13 @@
     <label for="titleinput" class="form-label">Title</label>
     <input type="text" class="form-control" id="titleinput" value="{{post.title}}">
   </div>
-  <div style="display: none;">
-    <input type="text" class="form-control" id="id" value="{{post.id}}">
-  </div>
   <div class="row mb-3">
     <label for="postinput" class="form-label">Review</label>
     <textarea class="form-control" id="postinput" rows="3">{{post.content}}</textarea>
   </div>
 
-  <button id="update" class="btn btn-primary">Update</button>
-  <button id="delete" class="btn btn-primary">Delete</button>
+  <button id="update" class="btn btn-primary" data-id="{{post.id}}">Update</button>
+  <button id="delete" class="btn btn-primary" data-id="{{post.id}}">Delete</button>
   <script src="/js/update.js"></script>
 {{/if}}
 
