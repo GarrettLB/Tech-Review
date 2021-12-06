@@ -3,8 +3,22 @@
   <p>{{post.content}}</p>
   <p>Posted by 
     {{post.user.username}} 
-    on {{format_date post.time}}</p>
+    on {{format_date post.time}}
+  </p>
+
+  {{#each comments as |comment|}}
+    <div class="text-center">
+      <h3>{{text}}</h3>
+      <p>Posted by 
+        {{comment.user.username}} 
+        on {{change_date comment.time}}
+      </p>
+    </div>
+  {{/each}}
+
   <p>
-    <button class="btn btn-primary">Fund this Project!</button>
+    <button id="comment" class="btn btn-primary" data-id="{{post.id}}">Add Comment</button>
   </p>
 </div>
+
+<script src="/js/newcomment.js"></script>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -38,11 +38,28 @@ router.get('/posts/:id', async (req, res) => {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
+
+    const commentData = await Comment.findAll({
+      where: {
+        post_id: req.params.id
+      },
+      include: [
+        { 
+        model: User,
+        attributes: ['username']  
+        },
+      ]
+    })
     
     const post = postData.get({ plain: true })
+    const comments = commentData.map(comment => comment.get({ plain: true }));
+
+    console.log(post)
+    console.log(comments)
 
     res.render('post', {
       post,
+      comments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -87,6 +104,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
+
 router.get('/dashboard', async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
@@ -96,7 +115,7 @@ router.get('/dashboard', async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-      id: req.session.user_id
+      user_id: req.session.user_id
       },
       include: [{ model: User }]
     });
@@ -123,6 +142,14 @@ router.get('/newpost', (req, res) => {
     new: true,
     logged_in: req.session.logged_in,
   });
+});
+
+router.get('/newcomment/:id', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('newcomment');
 });
 
 module.exports = router;
