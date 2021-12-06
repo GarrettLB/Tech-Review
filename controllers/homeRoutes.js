@@ -50,6 +50,34 @@ router.get('/posts/:id', async (req, res) => {
   }
 });
 
+router.get('/yourposts/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        { 
+        model: User,
+        attributes: ['username']  
+        },
+      ]
+    });
+  
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+    
+    const post = postData.get({ plain: true })
+
+    res.render('newpost', {
+      post,
+      logged_in: req.session.logged_in,
+      exist: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -87,7 +115,8 @@ router.get('/dashboard', async (req, res) => {
 router.get('/newpost', (req, res) => {
 
   res.render('newpost', {
-    new: true
+    new: true,
+    logged_in: req.session.logged_in,
   });
 });
 

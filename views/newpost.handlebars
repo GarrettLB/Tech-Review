@@ -1,13 +1,28 @@
-<div class="row mb-3">
-  <label for="titleinput" class="form-label">Title</label>
-  <input type="text" class="form-control" id="titleinput">
-</div>
-<div class="row mb-3">
-  <label for="postinput" class="form-label">Review</label>
-  <textarea class="form-control" id="postinput" rows="3"></textarea>
-</div>
+{{#if exist}}
+  <div class="row mb-3">
+    <label for="titleinput" class="form-label">Title</label>
+    <input type="text" class="form-control" id="titleinput" value="{{post.title}}">
+  </div>
+  <div class="row mb-3">
+    <label for="postinput" class="form-label">Review</label>
+    <textarea class="form-control" id="postinput" rows="3">{{post.content}}</textarea>
+  </div>
+
+  <button id="update" class="btn btn-primary">Update</button>
+  <button id="delete" class="btn btn-primary">Delete</button>
+  <script src="/js/update.js"></script>
+{{/if}}
 
 {{#if new}}
+  <div class="row mb-3">
+    <label for="titleinput" class="form-label">Title</label>
+    <input type="text" class="form-control" id="titleinput">
+  </div>
+  <div class="row mb-3">
+    <label for="postinput" class="form-label">Review</label>
+    <textarea class="form-control" id="postinput" rows="3"></textarea>
+  </div>
+
   <button id="post" class="btn btn-primary">Post</button>
   <script src="/js/post.js"></script>
 {{/if}}
