@@ -12,15 +12,20 @@
         Tech Review
       </h1>
       <div class="navbar-nav spar">
-        <a class="nav-link red" aria-current="page" href="/">Home</a>
-        <a class="nav-link red" href="/dashboard">Dashboard</a>
-        <a class="nav-link red" href="/login">Login</a>
+        <a class="nav-link" aria-current="page" href="/">Home</a>
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+        <a class="nav-link" href="/login">Login</a>
+        {{#if logged_in}}
+        <a id="logout" class="nav-link">Logout</a>
+        {{/if}}
       </div>
     </header>
       <main class="container container-fluid mt-5">
         {{{ body }}}
       </main>
   </div>
-  </body>
 
+<script src="/js/logout.js"></script>
+
+</body>
 </html>
