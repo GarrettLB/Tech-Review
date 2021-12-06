@@ -112,6 +112,11 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
+router.get('/signup', (req, res) => {
+
+  res.render('signup');
+});
+
 router.get('/newpost', (req, res) => {
 
   res.render('newpost', {
