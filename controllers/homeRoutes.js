@@ -75,13 +75,20 @@ router.get('/dashboard', async (req, res) => {
   
     const posts = postData.map(post => post.get({ plain: true }));
   
-    res.render('titles', {
+    res.render('dashboard', {
       posts,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/newpost', (req, res) => {
+
+  res.render('newpost', {
+    new: true
+  });
 });
 
 module.exports = router;
