@@ -54,9 +54,6 @@ router.get('/posts/:id', async (req, res) => {
     const post = postData.get({ plain: true })
     const comments = commentData.map(comment => comment.get({ plain: true }));
 
-    console.log(post)
-    console.log(comments)
-
     res.render('post', {
       post,
       comments,
@@ -103,8 +100,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
-
-
 
 router.get('/dashboard', async (req, res) => {
   if (!req.session.logged_in) {

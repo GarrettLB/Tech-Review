@@ -1,24 +1,29 @@
-<div class="text-center">
-  <h2>{{post.title}}</h2>
-  <p>{{post.content}}</p>
-  <p>Posted by 
-    {{post.user.username}} 
-    on {{format_date post.time}}
-  </p>
+<div class="card text-center">
+  <div class="card-body">
+    <h3 class="card-title">{{post.title}}</h3>
+    <p class="card-text">{{post.content}}</p>
+    <button id="comment" class="btn btn-primary" data-id="{{post.id}}">Add Comment</button>
+  </div>
+  <div class="card-footer text-muted">
+    <p>Posted by {{post.user.username}} 
+        on {{format_date post.time}}
+    </p>
+  </div>
+</div>
 
-  {{#each comments as |comment|}}
-    <div class="text-center">
-      <h3>{{text}}</h3>
-      <p>Posted by 
-        {{comment.user.username}} 
-        on {{change_date comment.time}}
+{{#each comments as |comment|}}
+<div class="row justify-content-center">
+  <div class="card text-center w-75">
+    <div class="card-body">
+      <p class="card-text">{{text}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      <p>Posted by {{comment.user.username}} 
+          on {{format_date comment.date}}
       </p>
     </div>
-  {{/each}}
-
-  <p>
-    <button id="comment" class="btn btn-primary" data-id="{{post.id}}">Add Comment</button>
-  </p>
+  </div>
 </div>
+{{/each}}
 
 <script src="/js/newcomment.js"></script>
