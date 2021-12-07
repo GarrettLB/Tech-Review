@@ -1,5 +1,6 @@
 const updateRoute = async (event) => {
     event.preventDefault();
+    event.stopPropagation();
 
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -24,6 +25,7 @@ const updateRoute = async (event) => {
 
 const deleteRoute = async (event) => {
     event.preventDefault();
+    event.stopPropagation();
 
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
