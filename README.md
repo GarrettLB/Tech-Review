@@ -30,4 +30,4 @@ Tech-Review is a blog-style website, where you can post your thoughts, praises, 
 Deployed Live here:https://gb-tech-review.herokuapp.com/
 
 Screenshot:  
-<img src="./assets/images/Screenshot.png">
+<img src="./public/assets/images/Screenshot.png">
